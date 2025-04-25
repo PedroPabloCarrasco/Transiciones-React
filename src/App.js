@@ -1,37 +1,57 @@
 import React, { useState } from 'react';
+import './App.css'; // puedes ignorar esto si todo va en un solo archivo
 
-const Header = ({ show }) => {
-  const headerStyles = {
-    backgroundColor: show ? '#FF5733' : '#333',
-    transform: show ? 'scale(1)' : 'scale(0)',
-    position: 'absolute',
-    textAlign: 'center',
-    borderRadius: '4em',
-    color: '#FFF',
-    padding: '0.5em',
-    margin: '0.5em',
-    fontSize: '14px', // Corregí el typo "fontzize" a "fontSize"
-    transition: 'all 800ms ease'
-  };
-
+const Header = ({ show, toggle }) => {
   return (
-    <header style={headerStyles}>
-      <h1>Transiciones Css en linea <span role="img" aria-label="fuego">🔥</span></h1>
+    <header className={`header ${show ? 'show' : 'hide'}`}>
+      <h1>Transiciones CSS en línea <span role="img" aria-label="fuego">🔥</span></h1>
+      <p>Ejemplo de transiciones distintas en cada botón al presionar.</p>
+      <button className="btn fade-btn" onClick={toggle}>Ver más</button>
+
+      <div className="section">
+        <div className="card">
+          <h2>Transiciones en CSS</h2>
+          <p>Permiten animar estilos entre estados.</p>
+          <button className="btn scale-btn">Ver ejemplo</button>
+        </div>
+        <div className="card">
+          <h2>Botones personalizables</h2>
+          <p>Podés animarlos como quieras al hacer clic.</p>
+          <button className="btn rotate-btn">Ver ejemplo</button>
+        </div>
+        <div className="card">
+          <h2>Contenido dinámico</h2>
+          <p>Contenido que responde a eventos y se actualiza.</p>
+          <button className="btn slide-btn">Ver ejemplo</button>
+        </div>
+        <div className="card">
+          <h2>Ejemplos combinados</h2>
+          <p>Probamos todo junto con diferentes estilos.</p>
+          <button className="btn bounce-btn">Ver ejemplo</button>
+        </div>
+      </div>
+
+      <footer className="footer">
+        <p>&copy; 2025 Transiciones CSS</p>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Acerca</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </footer>
     </header>
   );
 };
 
 const App = () => {
   const [active, setActive] = useState(false);
-  
-  const toggle = () => setActive(!active);
-  
+
   return (
-    <div>
-      <button onClick={toggle}>
-        {active ? 'Activar' : 'Desactivar'} <span role="img" aria-label="fuego">🔥</span>
+    <div className="app">
+      <button className="toggle-btn" onClick={() => setActive(!active)}>
+        {active ? 'Ocultar' : 'Mostrar'} Header <span role="img" aria-label="fuego">🔥</span>
       </button>
-      <Header show={active} />
+      <Header show={active} toggle={() => setActive(!active)} />
     </div>
   );
 };

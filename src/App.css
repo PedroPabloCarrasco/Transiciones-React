@@ -1,38 +1,137 @@
-.App {
-  text-align: center;
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #1e1e2f;
+  margin: 0;
+  padding: 0;
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
+.app {
+  text-align: center;
+  padding: 2em;
+}
+
+.toggle-btn {
+  padding: 12px 24px;
+  background-color: #FF5733;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #ff784f;
+}
+
+/* Header animado */
+.header {
+  background: #333;
+  margin: 2em auto;
+  padding: 2em;
+  max-width: 90%;
+  border-radius: 2em;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.header.hide {
+  transform: scale(0.8);
+  opacity: 0;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header.show {
+  transform: scale(1);
+  opacity: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Botones base */
+.btn {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Animaciones únicas */
+.fade-btn:active {
+  opacity: 0.3;
+  transition: opacity 0.2s ease;
+  background: #6c757d;
+  color: #fff;
+}
+
+.scale-btn:active {
+  transform: scale(1.2);
+  background-color: #007bff;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.rotate-btn:active {
+  transform: rotate(20deg);
+  background-color: #17a2b8;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slide-btn:active {
+  transform: translateX(10px);
+  background-color: #dc3545;
+  color: white;
+}
+
+.bounce-btn:active {
+  animation: bounce 0.4s ease;
+  background-color: #28a745;
+  color: white;
+}
+
+/* Bounce keyframes */
+@keyframes bounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3); }
+  50%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* Sección de tarjetas */
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2em;
+  gap: 1em;
+}
+
+.card {
+  background: #444;
+  border-radius: 1em;
+  padding: 1.5em;
+  width: 250px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+  margin-top: 2em;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.footer ul li a {
+  color: #ccc;
+  text-decoration: none;
 }
