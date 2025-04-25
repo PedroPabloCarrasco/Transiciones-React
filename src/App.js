@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+const Header = ({ show }) => {
+  const headerStyles = {
+    backgroundColor: show ? '#FF5733' : '#333',
+    transform: show ? 'scale(1)' : 'scale(0)',
+    position: 'absolute',
+    textAlign: 'center',
+    borderRadius: '4em',
+    color: '#FFF',
+    padding: '0.5em',
+    margin: '0.5em',
+    fontSize: '14px', // Corregí el typo "fontzize" a "fontSize"
+    transition: 'all 800ms ease'
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <header style={headerStyles}>
+      <h1>Transiciones Css en linea <span role="img" aria-label="fuego">🔥</span></h1>
+    </header>
+  );
+};
+
+const App = () => {
+  const [active, setActive] = useState(false);
+  
+  const toggle = () => setActive(!active);
+  
+  return (
+    <div>
+      <button onClick={toggle}>
+        {active ? 'Activar' : 'Desactivar'} <span role="img" aria-label="fuego">🔥</span>
+      </button>
+      <Header show={active} />
     </div>
   );
-}
+};
 
 export default App;
